@@ -1,3 +1,31 @@
+#choose{
+    box-shadow:00px 00px 40px 0 rgba(0,0,0, 0.4);
+    background-color: white;
+    color:darkcyan;
+    
+    top:0;
+    bottom:0;
+    right:0;
+    left:0;
+    margin:auto;
+    height:300px;
+    width:480px;
+    position:absolute;
+    border: 2px solid;
+    border-color:darkcyan;
+}
+#res{
+    font-size:50px;
+    padding:20px;
+}
+.btn{
+    
+    font-size:36px;
+    float:left;
+    width:50%;
+}
+
+
 #box{
     box-shadow:00px 00px 40px 0 rgba(0,0,0, 0.4);
     box-shadow:00px 00px 1600px 0 rgba(127, 255, 212, 0.4);
@@ -49,6 +77,7 @@
     font-size: 24px;
     display:none;
 }
-#res{
+#re{
+    font-size:50px;
     padding:40px;
 }
