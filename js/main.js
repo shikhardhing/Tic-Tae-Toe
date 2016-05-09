@@ -1,199 +1,192 @@
 //SINGLE PLAYER
 //FOOLISH AI
+//computer starts always
 
 var player,computer;
 
 turn=0;check_flag=1;
+board=["faltu",   "","","",  "","","",   "","",""];
+board_copy=["faltu",   "","","",  "","","",   "","",""];
 
 $(document).ready(function(){
     
     $("#X").on("click",function(){
         player="X";computer="O";
         $("#choose").css("display","none");
-    comp();
+        $(".5").html(computer);
+        board[5]=computer;
+        turn=1;
         
     });
     $("#O").on("click",function(){
         player="O";computer="X";
         $("#choose").css("display","none");
-    comp();
+        $(".5").html(computer);
+        board[5]=computer;
+        turn=1;
     });
     
     $(".1").on("click",function(){
-        if(turn==1 && $(".1").html()==""){
+        
+        console.log(board);
+        if(turn==1 && board[1]==""){
             $(".1").html(player);
+            board[1]=player;
             check(player,1);
             if(check_flag==1)
                 comp();
         }       
      });
     $(".2").on("click",function(){
-        if(turn==1 && $(".2").html()==""){
+        if(turn==1 && board[2]==""){
             $(".2").html(player);
+            board[2]=player;
             check(player,2);
             if(check_flag==1)
                 comp();
         }
     });
     $(".3").on("click",function(){
-        if(turn==1 && $(".3").html()==""){
-            $(".3").html(player); 
+        if(turn==1 && board[3]==""){
+            $(".3").html(player);
+            board[3]=player;
             check(player,3);
             if(check_flag==1)
                 comp();
         }
     });
     $(".4").on("click",function(){
-        if(turn==1 && $(".4").html()==""){
-            $(".4").html(player); 
+        if(turn==1 && board[4]==""){
+            $(".4").html(player);
+            board[4]=player;
             check(player,4);
             if(check_flag==1)
                 comp();
         }
     });
     $(".5").on("click",function(){
-        if(turn==1 && $(".5").html()==""){
-            $(".5").html(player); 
+        if(turn==1 && board[5]==""){
+            $(".5").html(player);
+            board[5]=player;
             check(player,5);
             if(check_flag==1)
                 comp();
         }
     });
     $(".6").on("click",function(){
-        if(turn==1 && $(".6").html()==""){
+        if(turn==1 && board[6]==""){
             $(".6").html(player);
+            board[6]=player;
             check(player,6);
             if(check_flag==1)
                 comp();
         }
     });
     $(".7").on("click",function(){
-        if(turn==1 && $(".7").html()==""){
+        if(turn==1 && board[7]==""){
             $(".7").html(player);
+            board[7]=player;
             check(player,7);
             if(check_flag==1)
                 comp();
         }
     });
     $(".8").on("click",function(){
-        if(turn==1 && $(".8").html()==""){
+        if(turn==1 && board[8]==""){
             $(".8").html(player);
+            board[8]=player;
             check(player,8);
             if(check_flag==1)
                 comp();
         }
     });
     $(".9").on("click",function(){
-        if(turn==1 && $(".9").html()==""){
+        if(turn==1 && board[9]==""){
             $(".9").html(player);
+            board[9]=player;
             check(player,9);
             if(check_flag==1)
                 comp();
         }
     });
 });
+
 comp=function(){
-    if($(".5").html()==""){
-        $(".5").html(computer);
-        check(computer,5);
-    }
-    else if($(".1").html()==""){
-        $(".1").html(computer);
-        check(computer,1);
-    }    
-    else if($(".2").html()==""){
-        $(".2").html(computer);
-        check(computer,2);
-    }    
-    else if($(".3").html()==""){
-        $(".3").html(computer);
-        check(computer,3);
-    }    
-    else if($(".4").html()==""){
-        $(".4").html(computer);
-        check(computer,4);
-    }        
-    else if($(".6").html()==""){
-        $(".6").html(computer);
-        check(computer,6);
-    }    
-    else if($(".7").html()==""){
-        $(".7").html(computer);
-        check(computer,7);
-    }
-    else if($(".8").html()==""){
-        $(".8").html(computer);
-        check(computer,8);
-    }    
-    else if($(".9").html()==""){
-        $(".9").html(computer);
-        check(computer,9);
+    board_copy=board;
+    switch(move()) {
+        case 1: $(".1").html(computer);
+                board[1]=computer;
+                check(computer,1);
+                break;
+        case 2: $(".2").html(computer);
+                board[2]=computer;
+                check(computer,2);
+                break;
+        case 3: $(".3").html(computer);
+                board[3]=computer;
+                check(computer,3);
+                break;
+        case 4: $(".4").html(computer);
+                board[4]=computer;
+                check(computer,4);
+                break;
+        case 5: $(".5").html(computer);
+                board[5]=computer;
+                check(computer,5);
+                break;
+        case 6: $(".6").html(computer);
+                board[6]=computer;
+                check(computer,6);
+                break;
+        case 7: $(".7").html(computer);
+                board[7]=computer;
+                check(computer,7);
+                break;
+        case 8: $(".8").html(computer);
+                board[8]=computer;
+                check(computer,8);
+                break;
+        case 9: $(".9").html(computer);
+                board[9]=computer;
+                check(computer,9);
+                break;
+        
     }
     turn=1;
 };
 
-
-check=function(fora,bl){
-    var val1=$(".1").html();
-    var val2=$(".2").html();
-    var val3=$(".3").html();
-    var val4=$(".4").html();
-    var val5=$(".5").html();
-    var val6=$(".6").html();
-    var val7=$(".7").html();
-    var val8=$(".8").html();
-    var val9=$(".9").html();
+move=function(stage){
+    //AI
+    for(var i=0;i<9;i++){
+        if(board[i]=="")
+            return i;
+    }
     
+};
+
+check=function(fora){
     if(fora===computer)
         turn="COMPUTER WON";
     else
         turn="YOU WON";
     
-    if(val1!=""&&val2!=""&&val3!=""&&val4!=""&&val5!=""&&val6!=""&&val7!=""&&val8!=""&&val9!=""){
-        display_winner("IT'S A TIE");console.log("asdf");
+    if(board[1]!=""&&board[2]!=""&&board[3]!=""&&board[4]!=""&&board[5]!=""&&board[6]!=""&&board[7]!=""&&board[8]!=""&&board[9]!=""){
+        display_winner("IT'S A TIE");console.log("asdf"+board);
     }
     
-    switch(bl) {
-    case 1:
-            if((val1==val2 && val2==val3)||(val1==val4&& val4==val7)||(val1==val5&& val5==val9)){
-                display_winner(turn);            //draw lineconsole.log("asdf");
-            }
-            break;
-    case 2: if((val1==val2 && val2==val3)||(val2==val5 && val5==val8)){
-                display_winner(turn);  console.log("asdf");
-            }
-            break;
-    case 3: if((val1==val2 && val2==val3)||(val3==val6&& val6==val9)||(val3==val5&& val5==val7)){
-                display_winner(turn);  console.log("asdf");
-            }
-            break;
-    case 4: if((val4==val5 && val5==val6)||(val1==val4&& val4==val7)){
-                display_winner(turn);  console.log("asdf");
-            }
-            break;
-    case 5: if((val4==val5 && val5==val6)||(val2==val5&& val5==val8)||(val1==val5&& val5==val9)||(val3==val5&& val5==val7)){
-                display_winner(turn);  console.log("asdf");
-            }
-            break;
-    case 6: if((val4==val5 && val5==val6)||(val3==val6&& val6==val9)){
-                display_winner(turn);  console.log("asdf");
-            }
-            break;
-    case 7: if((val7==val8 && val8==val9)||(val1==val4&& val4==val7)||(val3==val5&& val5==val7)){
-                display_winner(turn);  console.log("asdf");
-            }
-            break;
-    case 8: if((val7==val8 && val8==val9)||(val2==val5&& val5==val8)){
-                display_winner(turn);  console.log("asdf");
-            }
-            break;
-    case 9: if((val7==val8 && val8==val9)||(val3==val6&& val6==val9)||(val1==val5&& val5==val9)){
-               display_winner(turn);  console.log("asdf");
-            }
-            break;
+    for(var i=1;i<8;i=i+3){
+        if(board[i]==board[i+1]&&board[i+1]==board[i+2]&&board[i+2]==fora)
+            display_winner(turn);
     }
     
-    
+    for(var i=1;i<4;i++){
+        if(board[i]==board[i+3]&&board[i+3]==board[i+6]&&board[i+6]==fora)
+            display_winner(turn);
+    }
+    if(board[1]==board[5]&& board[5]==board[9]&&board[9]==fora)
+        display_winnercomputer;
+    if(board[3]==board[5]&& board[5]==board[7]&&board[7]==fora)
+        display_winner(turn);
 };
 
 display_winner=function(turn){   
