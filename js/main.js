@@ -1,12 +1,11 @@
 //SINGLE PLAYER
-//FOOLISH AI
 //computer starts always
 
 var player,computer;
 
 turn=0;check_flag=1;
-board=["faltu",   "","","",  "","","",   "","",""];
-board_copy=["faltu",   "","","",  "","","",   "","",""];
+board=["",   "","","",  "","","",   "","",""];
+copy=["",   "","","",  "","","",   "","",""];
 
 $(document).ready(function(){
     
@@ -49,6 +48,7 @@ $(document).ready(function(){
     });
     $(".8").on("click",function(){
         play(8);
+        console.log("asdf");
     });
     $(".9").on("click",function(){
         play(9);
@@ -57,29 +57,110 @@ $(document).ready(function(){
 
 play=function(i){
     if(turn==1 && board[i]==""){
-            $("."+i).html(player);
-            board[i]=player;
-            check_winner(player,i);
-            if(check_flag==1)
-                comp();
-        }
+        $("."+i).html(player);
+        board[i]=player;
+        check_winner(player);
+        if(check_flag==1)
+            comp();
+    }
 };
 
 comp=function(){
-    board_copy=board;
     toMove=move();
     $("."+toMove).html(computer);
     board[toMove]=computer;
-    check_winner(computer,toMove);
+    check_winner(computer);
     turn=1;
 };
 
 move=function(stage){
-    //foolish AI
-    for(var i=1;i<=9;i++){
-        if(board[i]=="")
-            return i;
+    console.log("move");
+    copy=board;
+    console.log("c"+copy+"b"+board);
+    var index=0;
+    var bestScore = -1000;
+    for (var i =1;i<=9;i++){
+       if(copy[i]==""){             
+           copy[i]=computer;
+            var score = move_player();
+           copy[i]="";console.log(i+" "+score);
+           if (score > bestScore){ 
+               bestScore = score;
+               index=i;
+            }
+       }
+    }
+    return index;
+};
+
+move_computer=function(){
+    check_value=check();
+    if(check_value!=-500){
+        return check_value;
+    }
+    var max = -10000;
+    for (var i =1;i<=9;i++){
+       if(copy[i]==""){
+           copy[i]=computer;
+           var score = move_player();
+           copy[i]="";
+           if (score > max) 
+                max = score;
+       }
+    }
+    return max;
+}
+move_player=function(){
+    check_value=check();
+    if(check_value!=-500)
+        return check_value;
+    var min = 10000;
+    for (var i =1;i<=9;i++){
+       if(copy[i]==""){
+           copy[i]=player;
+           var score = move_computer();
+           copy[i]="";
+           if(score<min)
+                min = score;
+       }
+    }
+    return min-1;
+}
+
+check=function(){
+    for(var i=1;i<8;i=i+3){
+        if(copy[i]==copy[i+1]&&copy[i+1]==copy[i+2]){
+            if(copy[i+2]==computer)
+                return 20;
+            else if(copy[i+2]==player)
+                return 0;
+        }
     }    
+    for(var i=1;i<4;i++){
+        if(copy[i]==copy[i+3]&&copy[i+3]==copy[i+6]){
+            if(copy[i+6]==computer)
+                return 20;
+            else if(copy[i+6]==player)
+                return 0;
+        }
+    }
+    if(copy[1]==copy[5]&& copy[5]==copy[9]){
+        if(copy[9]==computer)
+            return 20;
+        else if(copy[9]==player)
+            return 0;
+    }
+    if(copy[3]==copy[5]&& copy[5]==copy[7]){
+        if(copy[7]==computer)
+            return 20;
+        else if(copy[7]==player)
+            return 0;
+    }
+    if(copy[1]!=""&&copy[2]!=""&&copy[3]!=""&&copy[4]!=""&&copy[5]!=""&&copy[6]!=""&&copy[7]!=""&&copy[8]!=""&&copy[9]!=""){
+        return 10;
+    }
+    
+    return -500;
 };
 
 check_winner=function(fora){
@@ -106,10 +187,21 @@ check_winner=function(fora){
         display_winner(turn);
 };
 
-display_winner=function(turn){   
+display_winner=function(tur){
+    turn=0;
+    check_flag=0;   
     $("#won").css("display","block");                                                                       
-    $("#res").html(turn);
-    console.log(turn);
-    turn=0  ;
-    check_flag=0;
-}
+    $("#res").html(tur);    
+    
+    
+   /* setTimeout(function(){
+        board=["",   "","","",  "",computer,"",   "","",""];
+        copy=["",   "","","",  "",computer,"",   "","",""];
+        for(var i=1;i<=9;i++)
+            $("."+i).html("");
+        $(".5").html(computer);    
+    console.log("asd");
+        turn=1;
+        $("#won").css("display","none");                                                                       
+    },2500);*/
+};
