@@ -14,9 +14,9 @@
     border: 2px solid;
     border-color:darkcyan;
 }
-#res{
+#re{
     font-size:50px;
-    padding:20px;
+    padding:30px;
 }
 .btn{
     
@@ -39,7 +39,7 @@
     position:absolute;
     border: 2px solid;
     border-color:aquamarine;
-    font-size: 24px;
+    font-size: 36px;
 }
 
 
@@ -63,21 +63,33 @@
     box-shadow:00px 00px 40px 0 rgba(0,0,0, 0.4);
     background-color: white;
     color:darkcyan;
-    
     top:0;
     bottom:0;
     right:0;
     left:0;
     margin:auto;
-    height:200px;
-    width:320px;
+    height:250px;
+    width:400px;
     position:absolute;
     border: 2px solid;
     border-color:darkcyan;
     font-size: 24px;
     display:none;
 }
-#re{
-    font-size:50px;
-    padding:40px;
+
+#res{
+    font-size:45px;
+    padding:10px;
+    margin: 20px;
+}
+.restart{
+    float:none;
+    color:#fff;
+    font-size:30px;
+    background-color: rgba(0,139,139,0.75);
+}
+
+.restart:hover,.restart:focus,.restart:active,restart:visited{
+    background-color: rgba(0,139,139,1);
+    color:#fff;
 }

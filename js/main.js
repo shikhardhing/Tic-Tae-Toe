@@ -48,11 +48,14 @@ $(document).ready(function(){
     });
     $(".8").on("click",function(){
         play(8);
-        console.log("asdf");
+        console.log("asdf"+board);
     });
     $(".9").on("click",function(){
         play(9);
     });
+    $(".restart").on("click",function(){
+        restart();
+    })
 });
 
 play=function(i){
@@ -62,6 +65,9 @@ play=function(i){
         check_winner(player);
         if(check_flag==1)
             comp();
+    }
+    else{
+        console.log(turn + board[i]);   
     }
 };
 
@@ -191,17 +197,16 @@ display_winner=function(tur){
     turn=0;
     check_flag=0;   
     $("#won").css("display","block");                                                                       
-    $("#res").html(tur);    
-    
-    
-   /* setTimeout(function(){
-        board=["",   "","","",  "",computer,"",   "","",""];
-        copy=["",   "","","",  "",computer,"",   "","",""];
-        for(var i=1;i<=9;i++)
-            $("."+i).html("");
-        $(".5").html(computer);    
-    console.log("asd");
-        turn=1;
-        $("#won").css("display","none");                                                                       
-    },2500);*/
+    $("#res").html(tur);
 };
+
+restart=function(){
+    board=["",   "","","",  "",computer,"",   "","",""];
+    copy=["",   "","","",  "",computer,"",   "","",""];
+    for(var i=1;i<=9;i++)
+        $("."+i).html("");
+    $(".5").html(computer);
+    turn=1;check_flag=1;
+    $("#won").css("display","none");
+    console.log(board);
+}
