@@ -14,15 +14,9 @@
     border: 2px solid;
     border-color:darkcyan;
 }
-<<<<<<< HEAD
 #re{
     font-size:50px;
     padding:30px;
-=======
-#res{
-    font-size:50px;
-    padding:20px;
->>>>>>> master
 }
 .btn{
     
@@ -45,11 +39,7 @@
     position:absolute;
     border: 2px solid;
     border-color:aquamarine;
-<<<<<<< HEAD
     font-size: 36px;
-=======
-    font-size: 24px;
->>>>>>> master
 }
 
 
@@ -73,29 +63,19 @@
     box-shadow:00px 00px 40px 0 rgba(0,0,0, 0.4);
     background-color: white;
     color:darkcyan;
-<<<<<<< HEAD
-=======
-    
->>>>>>> master
     top:0;
     bottom:0;
     right:0;
     left:0;
     margin:auto;
-<<<<<<< HEAD
     height:250px;
     width:400px;
-=======
-    height:200px;
-    width:320px;
->>>>>>> master
     position:absolute;
     border: 2px solid;
     border-color:darkcyan;
     font-size: 24px;
     display:none;
 }
-<<<<<<< HEAD
 
 #res{
     font-size:45px;
@@ -112,9 +92,4 @@
 .restart:hover,.restart:focus,.restart:active,restart:visited{
     background-color: rgba(0,139,139,1);
     color:#fff;
-=======
-#re{
-    font-size:50px;
-    padding:40px;
->>>>>>> master
 }

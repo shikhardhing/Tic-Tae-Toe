@@ -48,21 +48,14 @@ $(document).ready(function(){
     });
     $(".8").on("click",function(){
         play(8);
-<<<<<<< HEAD
         console.log("asdf"+board);
-=======
-        console.log("asdf");
->>>>>>> master
     });
     $(".9").on("click",function(){
         play(9);
     });
-<<<<<<< HEAD
     $(".restart").on("click",function(){
         restart();
     })
-=======
->>>>>>> master
 });
 
 play=function(i){
@@ -73,12 +66,9 @@ play=function(i){
         if(check_flag==1)
             comp();
     }
-<<<<<<< HEAD
     else{
         console.log(turn + board[i]);   
     }
-=======
->>>>>>> master
 };
 
 comp=function(){
@@ -207,7 +197,6 @@ display_winner=function(tur){
     turn=0;
     check_flag=0;   
     $("#won").css("display","block");                                                                       
-<<<<<<< HEAD
     $("#res").html(tur);
 };
 
@@ -221,19 +210,3 @@ restart=function(){
     $("#won").css("display","none");
     console.log(board);
 }
-=======
-    $("#res").html(tur);    
-    
-    
-   /* setTimeout(function(){
-        board=["",   "","","",  "",computer,"",   "","",""];
-        copy=["",   "","","",  "",computer,"",   "","",""];
-        for(var i=1;i<=9;i++)
-            $("."+i).html("");
-        $(".5").html(computer);    
-    console.log("asd");
-        turn=1;
-        $("#won").css("display","none");                                                                       
-    },2500);*/
-};
->>>>>>> master
