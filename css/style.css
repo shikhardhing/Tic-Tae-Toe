@@ -72,7 +72,7 @@
     width:400px;
     position:absolute;
     border: 2px solid;
-    border-color:darkcyan;
+    border-color:aquamarine;
     font-size: 24px;
     display:none;
 }
@@ -86,10 +86,10 @@
     float:none;
     color:#fff;
     font-size:30px;
-    background-color: rgba(0,139,139,0.75);
+    background-color: rgba(0,150,150,0.75);
 }
 
 .restart:hover,.restart:focus,.restart:active,restart:visited{
-    background-color: rgba(0,139,139,1);
+    background-color: rgba(0,150,150,1);
     color:#fff;
 }
